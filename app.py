@@ -45,4 +45,9 @@ if st.button("Analyze Sentiment"):
         prediction = model.predict(vectorized)[0]
         sentiment = decode_sentiment(prediction)
 
-        st.success(f"Predicted Sentiment: **{sentiment.capitalize()}**")
+        if sentiment == "positive":
+            st.markdown(f"<p style='color:green; font-size:24px;'>✅ Predicted Sentiment: <b>{sentiment.capitalize()}</b></p>", unsafe_allow_html=True)
+        elif sentiment == "negative":
+            st.markdown(f"<p style='color:red; font-size:24px;'>❌ Predicted Sentiment: <b>{sentiment.capitalize()}</b></p>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<p style='color:gray; font-size:24px;'>😐 Predicted Sentiment: <b>{sentiment.capitalize()}</b></p>", unsafe_allow_html=True)
